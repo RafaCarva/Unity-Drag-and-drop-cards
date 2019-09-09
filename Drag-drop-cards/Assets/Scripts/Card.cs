@@ -12,6 +12,10 @@ public class Card : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHand
     public Image artworkImage;
     private string playerAction;
 
+    public Transform parentToReturnTo = null;
+
+
+
     //OnValidate vai mostrar o objeto montado assim que o script card for atruibuido no slot
     private void OnValidate()
     {
@@ -19,20 +23,37 @@ public class Card : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHand
         playerAction = cardData.playerAction.ToString();
     }
 
-    //Esse método é a implementação da interface IBeginDragHandler
+    //Esse método é a implementação da interface IBeginDragHandler.
     public void OnBeginDrag(PointerEventData eventData)
     {
-        Debug.Log("OnBeginDrag");
+        //Debug.Log("OnBeginDrag");
+
+        //Esse é o pai "inicial"
+        parentToReturnTo = this.transform.parent;
+
+        //Aqui ele vai "deslocar"o parentesco para um nível acima.
+        this.transform.SetParent(this.transform.parent.parent);
+
+        //CanvasGroup é um componente que foi adicionado no prefab card.
+        //no início do drag setamos blockRaycast para false, assim vai ser
+        //possível identificar os eventos das areas que tem DropZone.cs
+        GetComponent<CanvasGroup>().blocksRaycasts = false;
     }
 
     public void OnDrag(PointerEventData eventData)
     {
-        Debug.Log("OnDrag");
+        //Debug.Log("OnDrag");
         transform.position = eventData.position;
     }
 
     public void OnEndDrag(PointerEventData eventData)
     {
-        Debug.Log("OnEndDrag");
+        //Debug.Log("OnEndDrag");
+
+        //No início do deslocamento, esse objeto ficou como filho direto do Canvas
+        //assim que acaber o drag ele voltará a ser filho do panel inicial.
+        this.transform.SetParent(parentToReturnTo);
+
+        GetComponent<CanvasGroup>().blocksRaycasts = true;
     }
 }
