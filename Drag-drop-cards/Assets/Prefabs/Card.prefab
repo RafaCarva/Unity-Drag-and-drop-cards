@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 4006146013269251892}
   - component: {fileID: 4006146013269251893}
   - component: {fileID: 3829892821255071023}
+  - component: {fileID: 5682043880315839496}
   m_Layer: 5
   m_Name: Card
   m_TagString: Untagged
@@ -50,8 +51,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6791ff53d99c41b98b588f941830b65, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cardData: {fileID: 0}
-  artworkImage: {fileID: 0}
+  cardData: {fileID: 11400000, guid: 4af6b32ca07b948bb9b9e42ca4f11916, type: 2}
+  artworkImage: {fileID: 4006146013438833892}
+  parentToReturnTo: {fileID: 0}
+  placeholderParent: {fileID: 0}
+  placeholder: {fileID: 0}
 --- !u!225 &3829892821255071023
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -64,6 +68,26 @@ CanvasGroup:
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
+--- !u!114 &5682043880315839496
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4006146013269251891}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1679637790, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_IgnoreLayout: 0
+  m_MinWidth: 50
+  m_MinHeight: 50
+  m_PreferredWidth: 50
+  m_PreferredHeight: 50
+  m_FlexibleWidth: -1
+  m_FlexibleHeight: -1
+  m_LayoutPriority: 1
 --- !u!1 &4006146013438833890
 GameObject:
   m_ObjectHideFlags: 0
@@ -129,7 +153,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 78d6ff04cab2547c19f63a48283dfe94, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 0df91021ff8a0465eacf43b26a318567, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
